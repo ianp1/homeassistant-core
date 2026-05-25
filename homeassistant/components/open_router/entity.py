@@ -33,6 +33,7 @@ from homeassistant.const import CONF_MODEL
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import device_registry as dr, llm
+from homeassistant.helpers.llm import sanitize_tool_schema
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.json import json_dumps
 
@@ -92,7 +93,7 @@ def _format_tool(
     """Format tool specification."""
     tool_spec = FunctionDefinition(
         name=tool.name,
-        parameters=convert(tool.parameters, custom_serializer=custom_serializer),
+        parameters=sanitize_tool_schema(convert(tool.parameters, custom_serializer=custom_serializer)),
     )
     if tool.description:
         tool_spec["description"] = tool.description
