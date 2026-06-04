@@ -219,7 +219,7 @@ class OpenRouterEntity(Entity):
 
         model = self.model
 
-        extra_body: dict[str, Any] = {"provider": {"require_parameters": True}}
+        extra_body: dict[str, Any] = {"provider": {"require_parameters": True, "reasoning": {"effort": "none"}}}
 
         tools: list[ChatCompletionFunctionToolParam | dict[str, Any]] = []
         if chat_log.llm_api:
