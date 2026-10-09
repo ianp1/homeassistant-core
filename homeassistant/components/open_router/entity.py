@@ -237,7 +237,12 @@ class OpenRouterEntity(Entity):
         if self.subentry.data.get(CONF_WEB_SEARCH):
             model = f"{model}:online"
 
-        extra_body: dict[str, Any] = {"require_parameters": True, "reasoning": {"effort": "none"}}
+        extra_body: dict[str, Any] = {
+            "require_parameters": True,
+            "reasoning": {"effort": "none", "enabled": False},
+            "provider": {"only": ["nextbit/bf16"]},
+            "allow_fallbacks": False,
+        }
 
         model_args = {
             "model": model,
