@@ -218,12 +218,13 @@ class OpenRouterEntity(Entity):
         """Generate an answer for the chat log."""
 
         model = self.model
-        extra_body: dict[str, Any] = {"provider": {
+        extra_body: dict[str, Any] = {
+            "provider": {"only": ["nextbit/bf16"]}
             "require_parameters": True, 
             "reasoning": {"effort": "none", "enabled": False},
-            "provider": {"only": ["nextbit/bf16"]},
+            "provider": ,
             "allow_fallbacks": False,
-        }}
+        }
 
         tools: list[ChatCompletionFunctionToolParam | dict[str, Any]] = []
         if chat_log.llm_api:
