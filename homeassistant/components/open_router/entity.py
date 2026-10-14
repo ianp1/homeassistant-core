@@ -219,10 +219,9 @@ class OpenRouterEntity(Entity):
 
         model = self.model
         extra_body: dict[str, Any] = {
-            "provider": {"only": ["nextbit/bf16"]}
-            "require_parameters": True, 
+            "provider": {"only": ["nextbit/bf16"]},
+            "require_parameters": True,
             "reasoning": {"effort": "none", "enabled": False},
-            "provider": ,
             "allow_fallbacks": False,
         }
 
